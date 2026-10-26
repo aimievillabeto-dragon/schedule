@@ -2,14 +2,12 @@ import { useState } from "react";
 import { api } from "./api";
 import { useAsync } from "./hooks";
 import FindClass from "./components/FindClass";
-import FreeRooms from "./components/FreeRooms";
 import RoomSchedule from "./components/RoomSchedule";
 import AddClassForm from "./components/AddClassForm";
 import { Status } from "./components/Status";
 
 const TABS = [
   { id: "find", label: "Find a Class" },
-  { id: "free", label: "Free Rooms" },
   { id: "room", label: "Room Schedule" },
 ];
 
@@ -35,7 +33,7 @@ export default function App() {
           </div>
           <div>
             <h1>Class Schedule &amp; Room Finder</h1>
-            <p>Find any class, and any free room, in seconds</p>
+            <p>Find any class and room schedule in seconds</p>
           </div>
         </div>
         <button className="btn cta" onClick={() => setShowForm(true)}>
@@ -66,7 +64,6 @@ export default function App() {
         ) : (
           <>
             {tab === "find" && <FindClass rooms={rooms.data} version={version} onChanged={changed} />}
-            {tab === "free" && <FreeRooms version={version} />}
             {tab === "room" && <RoomSchedule rooms={rooms.data} version={version} />}
           </>
         )}
